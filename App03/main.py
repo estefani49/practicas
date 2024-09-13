@@ -10,6 +10,15 @@ def main(page: ft.Page):
     lbl1=ft.Text("",
                 style=ft.TextStyle(size=40,weight="bold"))
     
+    def calcular_suma(txt_num1,txt_num2,txt_resultado):
+        try:
+            num1=float(txt_num1.value.strip())
+            num2=float(txt_num2.value.strip())
+            resultado= num1 + num2
+            txt_resultado.value= f"Resultado{resultado}"
+        except ValueError:
+            txt_resultado.value="Error: ingresa valores correctos"
+            
     Img1=ft.Image(src="shinobu.png", width=300,height=300)
     
     
@@ -23,14 +32,13 @@ def main(page: ft.Page):
                             width=110,
                             height=50)
     
-    def no(e):
-    
-
+        
+    def limpiar(e):
+        txt_num1.value = ""
+        txt_num2.value = ""
+        txt_resultado.value = "Resultado: "
         page.update()
         
-    def si(e):
-        Img1.src="shinobu.png"
-        page.update()
         
     btnSi.on_click=si
     btnNo.on_click=no
